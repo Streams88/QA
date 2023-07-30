@@ -1,0 +1,54 @@
+SQL
+
+
+Create a table "Tournament" that will include the following columns:
+1)Id;
+2)First name participant's;
+3)Last name participant's;
+4)Birth year participant's;
+5)Number of games played;
+6)Amount of earned money.
+
+1)create table Tournament
+(
+	id int identity primary key,
+    [First name] nvarchar(50) not null,
+	[Last name] nvarchar(50) not null,
+	[Birth year] date,
+	[Number of games played] int default 0,
+	[Amount of earned money] int default 0
+);
+
+insert into Турнир ([First name], [Фамилия учасника], [Год рождения учасника], [Количество сыгранных игр], [Количество заработанных денег])
+values
+('Ігор', 'Петров', '1988-01-12', 10, 15000),
+('Юрій', 'Зіневич', '1989-12-23', 20, 20000),
+('Сергій', 'Козаренко', '1995-06-11', 25, 35000),
+('Роман', 'Нагорний', '1975-04-19', 35, 38000),
+('Павло', 'Резніченко', '1995-02-23', 25, 35000),
+('Олег', 'Канатний', '1995-02-21', 25, 35000)
+
+2)Create a query that combines "First Name" and "Last Name" of participants into a single column called "Participant."
+
+SELECT FirstName + ' ' + LastName AS Participant
+FROM Tournament;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
