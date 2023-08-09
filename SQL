@@ -21,17 +21,122 @@ Create a table "Tournament" that will include the following columns:
 
 insert into Турнир ([First name], [Фамилия учасника], [Год рождения учасника], [Количество сыгранных игр], [Количество заработанных денег])
 values
-('Ігор', 'Петров', '1988-01-12', 10, 15000),
-('Юрій', 'Зіневич', '1989-12-23', 20, 20000),
-('Сергій', 'Козаренко', '1995-06-11', 25, 35000),
-('Роман', 'Нагорний', '1975-04-19', 35, 38000),
-('Павло', 'Резніченко', '1995-02-23', 25, 35000),
-('Олег', 'Канатний', '1995-02-21', 25, 35000)
+('Igor', 'Petrov', '1988-01-12', 10, 15000),
+('Yuriy', 'Zinevich', '1989-12-23', 20, 20000),
+('Sergiy', 'Kozarenko', '1995-06-11', 25, 35000),
+('Roman', 'Nagorniy', '1975-04-19', 35, 38000),
+('Pavlo', 'Reznichenko', '1995-02-23', 25, 35000),
+('Oleg', 'Kanatniy', '1995-02-21', 25, 35000)
 
-2)Create a query that combines "First Name" and "Last Name" of participants into a single column called "Participant."
-
+2. Create a query that combines "First Name" and "Last Name" of participants into a single column called "Participant."
 SELECT FirstName + ' ' + LastName AS Participant
 FROM Tournament;
+
+
+
+3. Create a query that will determine the amount of money of participants with an increase of 55%.
+Select ([Amount of money earned]/100*55) As [Request+55]
+FROM Tournament;
+
+
+
+4. Create a query that will get the TOP 3 first records from the list in the table.
+Select TOP 3 *
+FROM Tournament;
+
+
+
+
+5. Using the DISTINCT keyword, check the Member Name column for duplicate names.
+Select Distinct [Member Name]
+FROM Tournament;
+
+
+
+
+6. Create a query that will display only those participants whose amount of money exceeds 1500.
+Select [Participant name], [Amount of money earned]
+FROM Tournament
+Where [Amount of money earned] > 1500;
+
+
+
+
+
+
+7 Create a query that will display information about participants who have no more than 6 characters in their last names.
+Select * FROM Tournament
+Where LEN([Participant Last Name])<6;
+
+
+
+8 Create a query that will display a list of participants born between September 7th and January 30th.
+Select * FROM Tournament
+Where [member's year of birth] between '1998-09-07' and '2000-01-30'
+
+
+
+9 Create a query that will display information about those participants who were born either on a paired day or in an unpaired year of birth.
+Select * FROM Tournament
+Where day([Participant's birthday]) %2 = 0 OR YEAR ([Participant's birthday])%2 = 1;
+
+
+
+10 Create a query that will display only those participants who do not have the name "John" (Or your any name at your discretion).
+Select * FROM Tournament
+Where NOT [Participant name] ='Igor';
+
+
+
+11 Create a query that sorts participants by money in ascending order.
+Select * FROM Tournament
+Order By [Amount of money earned]
+
+
+
+12 Create a query that sorts participants by number of games, in descending order.
+Select * FROM Tournament
+Order By [Number of Games Played] DESC
+
+
+
+
+
+13 Create a query that will display only those participants whose first letter of the name is "J", "N", "P" and ends in "O" (Or at your discretion).
+Select * FROM Tournament
+Where [Participant Last Name] LIKE '[N,R]%[o]';
+
+
+
+14 Create a query that displays the average value of the number of games played by all participants.
+Select AVG([Number of games played])
+FROM Tournament
+
+
+
+15 Create a query that displays the total amount of money for all participants.
+Select SUM([Amount of money earned])
+FROM Tournament
+
+
+16 Create a query that will calculate the total amount of money only for participants from 1 to 3 numbers.
+Select SUM([Amount of money earned])
+FROM Tournament
+Where id IN ('1', '2', '3');
+/
+Select SUM([Amount of money earned])
+FROM Tournament
+Where id between 1 and 3;
+
+
+17 Create a query that returns the participant with the minimum number of games.
+Select MIN([Number of games played])
+FROM Tournament
+
+
+18 Create a query that displays the participants with the maximum amount of money.
+Select MAX([Amount of money earned])
+FROM Tournament
 
 
 
